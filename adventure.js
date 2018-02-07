@@ -9,8 +9,8 @@ var userX = 0
 var userY = 0
 
 // Hide the treasure, also with x y values
-var treasureX = 0
-var treasureY = 1
+var treasureX = 2
+var treasureY = 2
 
 //Based on current position determine available directions
 //Store text of each possible direction
@@ -76,7 +76,7 @@ function beginGame() {
     var strDirectionsList = ""
     
     //Check if 'north' is available
-    if (intN = 1) {
+    if (intN == 1) {
       strDirectionsList = strDirectionsList + strN
       if (intCommasNeeded >= 1) {
         strDirectionsList = strDirectionsList + ", "
@@ -88,7 +88,7 @@ function beginGame() {
     }
 
     //Check if 'south' is available
-    if (intS = 1) {
+    if (intS == 1) {
       strDirectionsList = strDirectionsList + strS
       if (intCommasNeeded >= 1) {
         strDirectionsList = strDirectionsList + ", "
@@ -100,7 +100,7 @@ function beginGame() {
     }
 
     //Check if 'east' is available
-    if (intE = 1) {
+    if (intE == 1) {
       strDirectionsList = strDirectionsList + strE
       if (intCommasNeeded >= 1) {
         strDirectionsList = strDirectionsList + ", "
@@ -112,7 +112,7 @@ function beginGame() {
     }
 
     //Check if 'west' is available
-    if (intW = 1) {
+    if (intW == 1) {
       strDirectionsList = strDirectionsList + strW
       if (intCommasNeeded >= 1) {
         strDirectionsList = strDirectionsList + ", "
@@ -132,13 +132,13 @@ function beginGame() {
     console.log(direction)
 
     //User enters 'north'
-    if (direction = "north") {
+    if (direction == "north") {
       //Check if direction is available
-      if (intN = 1){
-          console.log("increase north by one")
+      if (intN == 1){
           //Increase user's Y location by one.
           userY = userY + 1
-          console.log("userY: " + userY)
+          //Allow south direction
+          //intS = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
@@ -150,11 +150,13 @@ function beginGame() {
     }
 
     //User enters 'south'
-    if (direction = "south") {
+    if (direction == "south") {
       //Check if direction is available
-      if (intS = 1){
+      if (intS == 1){
           //Decrease user's Y location by one.
           userY = userY - 1
+          //Allow north direction
+          //intN = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
@@ -166,11 +168,13 @@ function beginGame() {
     }
 
     //User enters 'east'
-    if (direction = "east") {
+    if (direction == "east") {
       //Check if direction is available
-      if (intE = 1){
+      if (intE == 1){
           //Increase user's X location by one.
           userX = userX + 1
+          //Allow west direction
+          //intW = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
@@ -182,11 +186,13 @@ function beginGame() {
     }
 
     //User enters 'west'
-    if (direction = "west") {
+    if (direction == "west") {
       //Check if direction is available
-      if (intW = 1){
+      if (intW == 1){
           //Decrease user's X location by one.
           userX = userX - 1
+          //Allow east direction
+          //intE = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
@@ -196,6 +202,7 @@ function beginGame() {
         console.log("Sorry, you have reached the outer boundary please select a different direction.")
       }
     }
+
   }
   /*treasureFound = true*/
   alert("Congratulations " + name + "! You have discovered the treasure!")
