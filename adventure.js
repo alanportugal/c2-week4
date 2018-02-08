@@ -26,6 +26,12 @@ var intE = 0
 var intW = 0
 var intTotal = 4
 
+function funcx() {
+   setTimeout(funcx, 3000);
+}
+
+funcx();
+
 function beginGame() {
   // Flag that controls loop
   var treasureFound = false
@@ -62,75 +68,53 @@ function beginGame() {
       intW = 1
     }
 
-    //Determine the number of commas to list based on integer count of available directions
-    var intCommasNeeded = 0
-    intTotal = intN + intS + intE + intW
-
-    if (intTotal >= 2) {
-      intCommasNeeded = intTotal - 1
-    }
-
     //***********************************************
     //Dynamically build available directions
     //***********************************************
-    var strDirectionsList = ""
+    var strDirectionsList
     
     //Check if 'north' is available
-    if (intN == 1) {
-      strDirectionsList = strDirectionsList + strN
-      if (intCommasNeeded >= 1) {
-        strDirectionsList = strDirectionsList + ", "
-        intCommasNeeded = intCommasNeeded - 1
-      }      
-      else {
-        strDirectionsList = strDirectionsList
+    if (userY < maxY) {
+      if ((userY + 1) < maxY) {
+        //strN = "north"
+      } else {
+        strN = ""
       }
     }
 
     //Check if 'south' is available
-    if (intS == 1) {
-      strDirectionsList = strDirectionsList + strS
-      if (intCommasNeeded >= 1) {
-        strDirectionsList = strDirectionsList + ", "
-        intCommasNeeded = intCommasNeeded - 1
-      }      
-      else {
-        strDirectionsList = strDirectionsList
+    if (userY > minY) {
+      if ((userY - 1) > minY) {
+        //strS = "south"
+      } else {
+        strS = ""
       }
     }
 
     //Check if 'east' is available
-    if (intE == 1) {
-      strDirectionsList = strDirectionsList + strE
-      if (intCommasNeeded >= 1) {
-        strDirectionsList = strDirectionsList + ", "
-        intCommasNeeded = intCommasNeeded - 1
-      }      
-      else {
-        strDirectionsList = strDirectionsList
+    if (userX < maxX) {
+     if ((userX + 1) < maxX) {
+        //strE = "east"
+      } else {
+        strE = ""
       }
     }
 
     //Check if 'west' is available
-    if (intW == 1) {
-      strDirectionsList = strDirectionsList + strW
-      if (intCommasNeeded >= 1) {
-        strDirectionsList = strDirectionsList + ", "
-        intCommasNeeded = intCommasNeeded - 1
-      }      
-      else {
-        strDirectionsList = strDirectionsList
+    if (userX > minX) {
+      if ((userX - 1) > minX) {
+        //strW = "west"
+      } else {
+        strW = ""
       }
     }
+
+    strDirectionsList = strN + ", " + strS + ", " + strE + ", " + strW
     //***********************************************
 
-    //var direction = prompt("Which available directions would you like to go? (north, south, east, west)")
-
-    //Dynamic list of available directions
-    var direction = prompt("You are currently located at (" + userX + ", " + userY + ") - which available directions would you like to go? (" + strDirectionsList + ")")
-
+    //Prompt user for direction
+    var direction = prompt("You are currently located at (" + userX + ", " + userY + ") - within the boundary, which direction would you like to go? (north, south, east, west)")
     console.log(direction)
-
     
     if (direction == "north") {
       //User enters 'north'
@@ -138,14 +122,12 @@ function beginGame() {
       if ((userY + 1) <= maxY){
           //Increase user's Y location by one.
           userY = userY + 1
-          //Allow south direction
-          //intS = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
       } else {
-        console.log("Sorry, you have reached the outer boundary please select a different direction.")
+        console.log("Sorry, you have reached the outer North boundary please select a different direction.")
       }
     } else if (direction == "south") {
       //User enters 'south'
@@ -153,14 +135,12 @@ function beginGame() {
       if ((userY - 1) >= minY){
           //Decrease user's Y location by one.
           userY = userY - 1
-          //Allow north direction
-          //intN = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
       } else{
-        console.log("Sorry, you have reached the outer boundary please select a different direction.")
+        console.log("Sorry, you have reached the outer South boundary please select a different direction.")
       }
     } else if (direction == "east") {
       //User enters 'east'
@@ -168,14 +148,12 @@ function beginGame() {
       if ((userX) + 1 <= maxX){
           //Increase user's X location by one.
           userX = userX + 1
-          //Allow west direction
-          //intW = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
       } else{
-        console.log("Sorry, you have reached the outer boundary please select a different direction.")
+        console.log("Sorry, you have reached the outer East boundary please select a different direction.")
       }
     } else if (direction == "west") {
       //User enters 'west'
@@ -183,18 +161,17 @@ function beginGame() {
       if ((userX - 1) >= minX){
           //Decrease user's X location by one.
           userX = userX - 1
-          //Allow east direction
-          //intE = 1
           //Check to see if new location contains the treasure.
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
       } else{
-        console.log("Sorry, you have reached the outer boundary please select a different direction.")
+        console.log("Sorry, you have reached the outer West boundary please select a different direction.")
       }
     }
   }
   /*treasureFound = true*/
-  alert("Congratulations " + name + "! You have discovered the treasure!")
+  alert("Congratulations " + name + "! You have discovered the treasure! After you press 'Ok', the game will reset.")
   console.log("Congratulations " + name + "! You have discovered the treasure!")
+  location.reload()
 }
