@@ -12,20 +12,6 @@ var userY = 0
 var treasureX = 2
 var treasureY = 2
 
-//Based on current position determine available directions
-//Store text of each possible direction
-var strN = ""
-var strS = ""
-var strE = ""
-var strW = ""
-
-//Store as a boolean each possible direction
-var intN = 0
-var intS = 0
-var intE = 0
-var intW = 0
-var intTotal = 4
-
 function funcx() {
    setTimeout(funcx, 3000);
 }
@@ -43,74 +29,6 @@ function beginGame() {
   alert("The game area size is " + (maxX+1) + " squares wide and " + (maxY+1) + " squares high.")
 
   while(!treasureFound){
-
-    // Check if North is available
-    if ((userY + 1) <= maxY) {
-      strN = "north"
-      intN = 1
-    }
-      
-    // Check if South is available
-    if ((userY - 1) >= minY) {
-      strY = "south"
-      intY = 1
-    }
-    
-    // Check if East is available
-    if ((userX + 1) <= maxX) {
-      strE = "east"
-      intE = 1
-    }
-
-    // Check if West is available
-    if ((userX - 1) >= minX) {
-      strW = "west"
-      intW = 1
-    }
-
-    //***********************************************
-    //Dynamically build available directions
-    //***********************************************
-    var strDirectionsList
-    
-    //Check if 'north' is available
-    if (userY < maxY) {
-      if ((userY + 1) < maxY) {
-        //strN = "north"
-      } else {
-        strN = ""
-      }
-    }
-
-    //Check if 'south' is available
-    if (userY > minY) {
-      if ((userY - 1) > minY) {
-        //strS = "south"
-      } else {
-        strS = ""
-      }
-    }
-
-    //Check if 'east' is available
-    if (userX < maxX) {
-     if ((userX + 1) < maxX) {
-        //strE = "east"
-      } else {
-        strE = ""
-      }
-    }
-
-    //Check if 'west' is available
-    if (userX > minX) {
-      if ((userX - 1) > minX) {
-        //strW = "west"
-      } else {
-        strW = ""
-      }
-    }
-
-    strDirectionsList = strN + ", " + strS + ", " + strE + ", " + strW
-    //***********************************************
 
     //Prompt user for direction
     var direction = prompt("You are currently located at (" + userX + ", " + userY + ") - within the boundary, which direction would you like to go? (north, south, east, west)")
