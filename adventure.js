@@ -85,7 +85,7 @@ function beginGame() {
     }
   }
   /*treasureFound = true*/
-  alert("Congratulations " + name + "! You have discovered the treasure! After you press 'Ok', the game will reset.")
+  alert("Congratulations " + name + "! You have discovered the treasure at location ("+ treasureX + ", " + treasureY +")! After you press 'Ok', the game will reset.")
   console.log("Congratulations " + name + "! You have discovered the treasure!")
   location.reload()
 }
