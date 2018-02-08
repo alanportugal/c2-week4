@@ -9,14 +9,10 @@ var userX = 0
 var userY = 0
 
 // Hide the treasure, also with x y values
-var treasureX = 2
-var treasureY = 2
-
-function funcx() {
-   setTimeout(funcx, 3000);
-}
-
-funcx();
+//var treasureX = 2
+//var treasureY = 2
+var treasureX = Math.floor(Math.random() * 2) + 1;
+var treasureY = Math.floor(Math.random() * 2) + 1;
 
 function beginGame() {
   // Flag that controls loop
