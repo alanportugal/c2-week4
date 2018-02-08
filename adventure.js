@@ -1,6 +1,6 @@
 // Define the size of the game play area
-var maxX = 3
-var maxY = 3
+var maxX = 2
+var maxY = 2
 var minX = 0
 var minY = 0
 
@@ -131,10 +131,11 @@ function beginGame() {
 
     console.log(direction)
 
-    //User enters 'north'
+    
     if (direction == "north") {
+      //User enters 'north'
       //Check if direction is available
-      if (intN == 1){
+      if ((userY + 1) <= maxY){
           //Increase user's Y location by one.
           userY = userY + 1
           //Allow south direction
@@ -143,16 +144,13 @@ function beginGame() {
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
-      } 
-      else{
+      } else {
         console.log("Sorry, you have reached the outer boundary please select a different direction.")
       }
-    }
-
-    //User enters 'south'
-    if (direction == "south") {
+    } else if (direction == "south") {
+      //User enters 'south'
       //Check if direction is available
-      if (intS == 1){
+      if ((userY - 1) >= minY){
           //Decrease user's Y location by one.
           userY = userY - 1
           //Allow north direction
@@ -161,16 +159,13 @@ function beginGame() {
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
-      } 
-      else{
+      } else{
         console.log("Sorry, you have reached the outer boundary please select a different direction.")
       }
-    }
-
-    //User enters 'east'
-    if (direction == "east") {
+    } else if (direction == "east") {
+      //User enters 'east'
       //Check if direction is available
-      if (intE == 1){
+      if ((userX) + 1 <= maxX){
           //Increase user's X location by one.
           userX = userX + 1
           //Allow west direction
@@ -179,16 +174,13 @@ function beginGame() {
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
-      } 
-      else{
+      } else{
         console.log("Sorry, you have reached the outer boundary please select a different direction.")
       }
-    }
-
-    //User enters 'west'
-    if (direction == "west") {
+    } else if (direction == "west") {
+      //User enters 'west'
       //Check if direction is available
-      if (intW == 1){
+      if ((userX - 1) >= minX){
           //Decrease user's X location by one.
           userX = userX - 1
           //Allow east direction
@@ -197,12 +189,10 @@ function beginGame() {
           if(userX == treasureX && userY == treasureY){
             treasureFound = true
           }
-      } 
-      else{
+      } else{
         console.log("Sorry, you have reached the outer boundary please select a different direction.")
       }
     }
-
   }
   /*treasureFound = true*/
   alert("Congratulations " + name + "! You have discovered the treasure!")
